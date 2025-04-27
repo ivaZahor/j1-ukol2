@@ -23,7 +23,12 @@ public class HlavniProgram {
         nakresliRovnostrannyTrojuhelnik(800, 400, 155);
         zofka.turnRight(30);
         nakresliKoleckoPolomer(720, 240, 80, 360);
-
+        //snehulak
+        nakresliKoleckoPolomer(1000,500,100,360);
+        nakresliKoleckoPolomer(1020,320,80,360);
+        nakresliKoleckoPolomer(960,320,30,360);
+        nakresliKoleckoPolomer(1180,320,30,360);
+        nakresliKoleckoPolomer(1050,190,50,360);
     }
 
     public void nakresliCtverec(double x, double y, int delkaStrany) {
