@@ -10,13 +10,20 @@ public class HlavniProgram {
     }
 
     public void start() {
-        nakresliCtverec(100, 200, 50);
+ /*       nakresliCtverec(100, 200, 50);
         nakresliCtverec(150, 200, 100);
         nakresliRovnostrannyTrojuhelnik(200, 400, 130);
-        nakresliKolecko(400, 200, 60);
+        nakresliMnohouhelnik(400, 200, 60);
         nakresliObdelnik( 100,400,30,60);
         nakresliObdelnik(100,500,80,140);
         nakresliPravouhlyTrojuhelnik(500,500,80);
+*/
+        //zmrzlina
+        zofka.turnLeft(30);
+        nakresliRovnostrannyTrojuhelnik(800, 400, 155);
+        zofka.turnRight(30);
+        nakresliKoleckoPolomer(720, 240, 80, 360);
+
     }
 
     public void nakresliCtverec(double x, double y, int delkaStrany) {
@@ -35,7 +42,7 @@ public class HlavniProgram {
         }
     }
 
-    public void nakresliKolecko(double x, double y, int delkaStrany) {
+    public void nakresliMnohouhelnik(double x, double y, int delkaStrany) {
         zofka.setLocation(x, y);
         zofka.penDown();
         for (int i = 0; i < 12; i++) {
@@ -43,26 +50,38 @@ public class HlavniProgram {
             zofka.turnRight(30);
         }
     }
-    public void nakresliObdelnik (double x, double y, int delkaKratsiStrany, int delkaDelsiStrany ) {
+
+    public void nakresliObdelnik(double x, double y, int delkaKratsiStrany, int delkaDelsiStrany) {
         zofka.setLocation(x, y);
-            zofka.move(delkaKratsiStrany);
-            zofka.turnRight(90);
-            zofka.move(delkaDelsiStrany);
-            zofka.turnRight(90);
-            zofka.move (delkaKratsiStrany);
-            zofka.turnRight(90);
-            zofka.move(delkaDelsiStrany);
-            zofka.turnRight(90);
+        zofka.move(delkaKratsiStrany);
+        zofka.turnRight(90);
+        zofka.move(delkaDelsiStrany);
+        zofka.turnRight(90);
+        zofka.move(delkaKratsiStrany);
+        zofka.turnRight(90);
+        zofka.move(delkaDelsiStrany);
+        zofka.turnRight(90);
     }
-    public void nakresliPravouhlyTrojuhelnik (double x, double y, int delkaKratsiStrany) {
+
+    public void nakresliPravouhlyTrojuhelnik(double x, double y, int delkaStrany) {
         zofka.setLocation(x, y);
         zofka.turnLeft(90);
-        zofka.move(delkaKratsiStrany);
+        zofka.move(delkaStrany);
         zofka.turnRight(135);
-        var velikostPrepony = Math.sqrt(2*Math.pow(delkaKratsiStrany, 2))
+        var velikostPrepony = Math.sqrt(2 * Math.pow(delkaStrany, 2));
         zofka.move(velikostPrepony);
         zofka.turnRight(135);
-        zofka.move(delkaKratsiStrany);
+        zofka.move(delkaStrany);
         zofka.turnRight(180);
+    }
+
+    public void nakresliKoleckoPolomer(double x, double y, int polomer, int pocetKroku) {
+        double delkaKroku = 2 * Math.PI * polomer / pocetKroku;
+        double uhelKroku = 360 / pocetKroku;
+        zofka.setLocation(x, y);
+        for (int i = 0; i < pocetKroku; i++) {
+            zofka.move(delkaKroku);
+            zofka.turnRight(uhelKroku);
+        }
     }
 }
