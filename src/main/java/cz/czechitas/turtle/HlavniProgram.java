@@ -16,7 +16,7 @@ public class HlavniProgram {
         nakresliKolecko(400, 200, 60);
         nakresliObdelnik( 100,400,30,60);
         nakresliObdelnik(100,500,80,140);
-        nakresliPravouhlyTrojuhelnik(500,500,80,116);
+        nakresliPravouhlyTrojuhelnik(500,500,80);
     }
 
     public void nakresliCtverec(double x, double y, int delkaStrany) {
@@ -54,12 +54,13 @@ public class HlavniProgram {
             zofka.move(delkaDelsiStrany);
             zofka.turnRight(90);
     }
-    public void nakresliPravouhlyTrojuhelnik (double x, double y, int delkaKratsiStrany, int delkaDelsiStrany) {
+    public void nakresliPravouhlyTrojuhelnik (double x, double y, int delkaKratsiStrany) {
         zofka.setLocation(x, y);
         zofka.turnLeft(90);
         zofka.move(delkaKratsiStrany);
         zofka.turnRight(135);
-        zofka.move(delkaDelsiStrany);
+        var velikostPrepony = Math.sqrt(2*Math.pow(delkaKratsiStrany, 2))
+        zofka.move(velikostPrepony);
         zofka.turnRight(135);
         zofka.move(delkaKratsiStrany);
         zofka.turnRight(180);
